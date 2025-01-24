@@ -48,13 +48,25 @@
 // console.log(length);
 //! task-3
 // const array = [1, 2, 3, "sdf", 4, "sdf", {}, 3, true, 2, [1, 6, 3], 1];
+<<<<<<< HEAD
 // function getSum(array) {
 //   let sum = 0;
 //   for (let i = 0; i < array.length; i++) {
 //     if (typeof array[i] === "number") {
 //       sum += array[i];
+=======
+// function sumOfNumbers(array2) {
+//   let sum = 0;
+//   for (let i = 0; i < array2.length; i++) {
+//     if (typeof array2[i] === "number") {
+//       sum += array2[i];
+>>>>>>> dcd220c26dfc47fe5eab7849726ed1c239c5cf5e
 //     }
 //   }
 //   return sum;
 // }
+<<<<<<< HEAD
 // console.log(getSum(array));
+=======
+// console.log(sumOfNumbers(array));
+>>>>>>> dcd220c26dfc47fe5eab7849726ed1c239c5cf5e
