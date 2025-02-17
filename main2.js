@@ -1,9 +1,6 @@
 async function getCards() {
-    const params = new URLSearchParams({ limit: 12 });
     try {
-      let response = await fetch(
-        `https://dummyjson.com/users?${params.toString()}`
-      );
+      let response = await fetch(`https://dummyjson.com/carts`);
       let data = await response.json();
       renderCards(data);
     } catch (error) {
@@ -20,31 +17,18 @@ async function getCards() {
       pInfo.style.fontSize = "25px";
       document.body.appendChild(pInfo);
     } else {
-      object.users.map((item) => {
+      object.carts[0].products.map((item) => {
         const div = document.createElement("div");
-        const div2 = document.createElement("div");
         const imgTag = document.createElement("img");
-        const firstName = document.createElement("h1");
-        const gender = document.createElement("h2");
-        const email = document.createElement("h3");
-        const phone = document.createElement("h4");
+        const pTag = document.createElement("p");
         const deleteMod = document.createElement("img");
-        const divBackcolor = document.createElement("div");
-        //
-        div.className = "div";
-        div2.className = "div2";
-        firstName.textContent = item.firstName + " " + item.lastName;
-        firstName.className = "firstName";
-        imgTag.src = item.image;
-        imgTag.className = "imgTag";
-        gender.textContent = item.gender;
-        gender.className = "gender";
-        email.textContent = item.email;
-        email.className = "email";
-        phone.textContent = item.phone;
-        phone.className = "phone";
         deleteMod.src = "https://cdn-icons-png.flaticon.com/512/60/60969.png";
         deleteMod.className = "modul";
+        div.className = "div1";
+        imgTag.src = item.thumbnail;
+        imgTag.className = "imgTag";
+        pTag.textContent = item.title;
+        pTag.className = "pTag";
         deleteMod.addEventListener("click", () => {
           const divMod = document.getElementById("modal");
           const buttonConfirm = document.getElementById("confirm");
@@ -60,15 +44,7 @@ async function getCards() {
           divMod.append(buttonConfirm, buttonCancel);
           body.appendChild(divMod);
         });
-        if (item.gender === "female") {
-          gender.style.color = "rgb(255, 0, 111)";
-        } else {
-          gender.style.color = "green";
-          divBackcolor.style.backgroundColor = "green";
-        }
-        divBackcolor.className = "divBack";
-        div2.append(firstName, gender, email, phone);
-        div.append(divBackcolor, div2, imgTag, deleteMod);
+        div.append(imgTag, pTag, deleteMod);
         document.body.appendChild(div);
       });
     }
